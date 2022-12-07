@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+    tools {
+        maven "maven"
+    }
+    stages {
+        stage('compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+        stage('successful compile done') {
+            steps {
+                echo 'successfully compiled'
+            }
+        }
+        stage('test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('successful test done') {
+            steps {
+                echo 'successfully tested'
+            }
+        }
+        stage('package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage('successful package done') {
+            steps {
+                echo 'successfully package done'
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'mvn install'
+            }
+        }
+       stage('successful build done') {
+            steps {
+                echo 'successfully builded'
+            }
+        }
+    }
+}
